@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project Doctor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="wordmark">
+    <span class="pulse" aria-hidden="true"></span>
+    <h1>Project Doctor</h1>
+  </div>
+  <p class="subtitle">Full-stack project diagnostics — functionality, database, security, performance.</p>
+</header>
+
+<main>
+  <section class="console">
+    <div class="field-row">
+      <label for="folder">Project folder</label>
+      <div class="input-wrap">
+        <input id="folder" type="text" spellcheck="false"
+          placeholder="/Users/erzan/projects/napoletana-nostra" autocomplete="off" />
+        <button id="run" class="primary">Run audit</button>
+      </div>
+    </div>
+    <button id="toggle-probe" class="link-btn">+ Add a live URL probe (optional)</button>
+    <div class="field-row probe-row" id="probe-row" hidden>
+      <label for="probe-url">Running app URL</label>
+      <div class="input-wrap">
+        <input id="probe-url" type="text" spellcheck="false"
+          placeholder="http://localhost:3000" autocomplete="off" />
+        <button id="probe" class="ghost">Probe headers</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="status" hidden></section>
+
+  <section id="summary" class="summary" hidden>
+    <div class="score-block">
+      <div class="ring" id="ring">
+        <span class="score-num" id="score-num">—</span>
+        <span class="score-label">health</span>
+      </div>
+      <div class="meta">
+        <div class="meta-item"><span class="k">stack</span><span class="v" id="m-stack">—</span></div>
+        <div class="meta-item"><span class="k">files</span><span class="v" id="m-files">—</span></div>
+        <div class="meta-item"><span class="k">scanned</span><span class="v" id="m-time">—</span></div>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section id="filters" class="filters" hidden>
+    <button class="cat active" data-cat="all">All</button>
+    <button class="cat" data-cat="functionality">Functionality</button>
+    <button class="cat" data-cat="database">Database</button>
+    <button class="cat" data-cat="security">Security</button>
+    <button class="cat" data-cat="performance">Performance</button>
+  </section>
+
+  <section id="findings" class="findings"></section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
